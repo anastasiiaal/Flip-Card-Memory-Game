@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+
+body {
+    background: center/cover no-repeat url("../img/bgc.png");
+    height: 100vh;
+}
+
+.container {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h1, h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ffffff;
+}
+
+h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #441104;
+    font-size: 1.24rem;
+    margin: 5px auto;
+}
+
+li {
+    color: #441104;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.25rem;
+}
+
+.dflex {
+    display: flex;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+/***************** HEADER *******************/
+
+header {
+    background: rgb(246,105,87);
+    background: linear-gradient(90deg, rgba(246,105,87,1) 0%, rgba(238,73,77,1) 100%);
+}
+
+header > .container {
+    padding: 20px 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#restart-btn {
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.75rem;
+    background: none;
+    border: none;
+}
+
+#restart-btn > img {
+    margin-left: 15px;
+}
+
+.pairs-left {
+    align-items: center;
+}
+
+.pairs-left > h1 {
+    margin-right: 13px;
+}
+
+
+/*************** MAIN *****************/
+
+.timer {
+    margin: 30px 0;
+    align-items: center;
+}
+
+/* #progressbar {
+    width: 100%;
+    border: none;
+    margin-right: 26px;
+} */
+
+.progress {
+    position: relative;
+    width: 100%;
+    margin-right: 30px;
+    height: 10px;
+    background: #f66a5775;
+    overflow: hidden;
+}
+
+.progress-bar {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #EE494D;
+    animation: load 60s infinite;
+}
+
+@keyframes load {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+p.number {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 25px;
+    color: #441104;
+}
+
+.card-wrapper {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.card {
+    background-color: #E9C46A;
+    height: 80px;
+    width: 15%;
+    margin: 10px 0;
+    box-shadow: 2px 4px 12px -2px rgba(28, 12, 2, 0.15);
+    border-radius: 3px;
+    transition: all .2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 6px 15px -2px rgba(28, 12, 2, 0.3);
+}
+
+
+
+/*************** modal window *****************/
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    background-color: #4411047e;
+    /* display: none; */
+}
+
+#modal {
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    box-sizing: border-box;
+    padding: 50px 0 60px;
+    border-radius: 3px;
+}
+
+.modal__text-wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal__text-wrapper > ol {
+    margin-top: 20px;
+    text-align: center;
+    transform: translate(15px, 0);
+}
+
+#new-btn {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 0.9rem;
+    background: linear-gradient(90deg, rgba(246,105,87,1) 0%, rgba(238,73,77,1) 100%);
+    border: none;
+    padding: 17px 33px;
+    border-radius: 3px;
+    margin-top: 35px;
+}
+
+
+/****************** classes JS *******************/
+
+.hidden {
+    visibility: hidden;
+}
+
+
+
+/*______________ M E D I A _ Q U E R I E S _____________*/
+
+/*992-1200*/
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 960px;
+    }
+}
+
+/*768-992*/
+@media screen and (max-width: 992px) {
+    .container {
+        width: 720px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 540px;
+    }
+
+    #modal {
+        width: 400px;
+    }
+}
+
+/*320-576*/
+@media screen and (max-width: 576px) {
+    .container {
+        width: 90%;
+    }
+
+    #restart-btn {
+        font-size: 1.25rem;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    #modal {
+        width: 90%;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+}
