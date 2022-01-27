@@ -27,15 +27,15 @@
         </div>
     </header>
     <main>
-        <div class="container">
-            <div class="timer dflex">
+        <div class="container" id="the-container">
+            <div class="timer dflex" id="timer-wrapper">
                 <!-- <progress id="progressbar" value="65" max="100"></progress> -->
                 <div class="progress">
-                    <span class="progress-bar"></span>
+                    <span id="progress-bar"></span>
                 </div>
                 <p class="number" id="timer-text">0:25</p>
             </div>
-            <div class="card-wrapper dflex">
+            <!-- <div class="card-wrapper">
                 <div class="card"></div>
                 <div class="card"></div>
                 <div class="card"></div>
@@ -72,7 +72,7 @@
                 <div class="card"></div>
                 <div class="card"></div>
                 <div class="card"></div>
-            </div>
+            </div> -->
         </div>
         <div class="container dflex">
             <div id="overlay" class="hidden"></div>
@@ -93,5 +93,7 @@
             </div>
         </div>
     </main>
+
+    <script src="script/main.js"></script>
 </body>
 </html>

@@ -109,7 +109,7 @@ button:hover {
     overflow: hidden;
 }
 
-.progress-bar {
+#progress-bar {
     position: absolute;
     left: 0;
     width: 0;
@@ -135,6 +135,7 @@ p.number {
 }
 
 .card-wrapper {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 30px;
@@ -155,6 +156,9 @@ p.number {
     box-shadow: 4px 6px 15px -2px rgba(28, 12, 2, 0.3);
 }
 
+.active-card {
+    background: center / contain no-repeat url("../img/fruit01.png"), #fff;
+}
 
 
 /*************** modal window *****************/
