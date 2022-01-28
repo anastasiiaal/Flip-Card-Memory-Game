@@ -148,7 +148,7 @@ p.number {
     margin: 10px 0;
     box-shadow: 2px 4px 12px -2px rgba(28, 12, 2, 0.15);
     border-radius: 3px;
-    transition: all .2s ease;
+    transition: all .2s ease-in-out;
 }
 
 .card:hover {
@@ -160,6 +160,8 @@ p.number {
     transition: all .2s ease;
     /* background: center / contain no-repeat url("../img/fruit01.png"), #fff; */
 }
+
+
 
 
 /*************** modal window *****************/

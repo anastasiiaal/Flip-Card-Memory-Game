@@ -1,19 +1,25 @@
 // main screen
 
-const restartBtn = document.getElementById('restart-btn');
+const restartBtn = document.getElementById('restart-btn'); //ok
 const pairsLeft = document.getElementById('pairs-left');
 const progressBar = document.getElementById('progress-bar');
 const timer = document.getElementById('timer-text');
 
 // modal window
 
-const overlay = document.getElementById('overlay');
-const modalWindow = document.getElementById('modal');
-const newGame = document.getElementById('new-game');
+const overlay = document.getElementById('overlay'); //ok
+const modalWindow = document.getElementById('modal'); //ok
+const startGame = document.getElementById('start-game');
 const newScore = document.getElementById('new-score');
 const bestScore = document.querySelectorAll('li');
-const newGameBtn = document.getElementById('new-btn');
+const newGameBtn = document.getElementById('new-btn'); //ok
 
+
+// restart game
+
+restartBtn.addEventListener('click', () => {
+    window.location.reload();
+});
 
 
 // fruit images array creation -> allImages[];
@@ -33,7 +39,6 @@ for (let i=0; i<18; i++) {
 }
 
 let allImages = imgArray.concat(imgArray2);
-
 
 
 
@@ -91,34 +96,99 @@ const randomNumberFromArray = (allImages) => {
 
 // function that generates non-repeating images on the back of the cards (thx to the previous function)
 
-cardArray.forEach(e => {
+/*_______good version__________________________________
+cardArray.forEach(el => {
 
     const randomImg = randomNumberFromArray(allImages);
     
-    e.addEventListener('click', () => {
+    el.addEventListener('click', () => {
 
-        console.log(randomImg);
-
-        e.classList.toggle('active-card');
-        if(e.classList.contains('active-card')) {
-            e.style.background = 'center / contain no-repeat url(' + randomImg.src + '), #fff';
+        el.classList.toggle('active-card');
+        if(el.classList.contains('active-card')) {
+            el.style.background = 'center / contain no-repeat url(' + randomImg.src + '), #fff';
         } else {
-            e.style.background = '#E9C46A';
+            el.style.background = '#E9C46A';
         };
 
     });
 
-});
+}); 
+___________________________________________________*/
+
+let isEqual = [];
+
+cardArray.forEach(el => {
+
+    const randomImg = randomNumberFromArray(allImages);
+    
+    el.addEventListener('click', () => {
+
+        checkIfPair(randomImg.src);
+
+        el.classList.toggle('active-card');
+        if(el.classList.contains('active-card')) {
+            
+            el.style.background = 'center / contain no-repeat url(' + randomImg.src + '), #fff';
+        } else {
+            el.style.background = '#E9C46A';
+        };
+
+    });
+
+}); 
+
+
+// function verifying if 2 images are equal or not
+
+const checkIfPair = (e) => {
+
+    isEqual.push(e);
+
+    if(isEqual.length === 2) {
+        console.log(isEqual);
+
+        let checker = ;
+
+        if (isEqual[0] === isEqual[1]) {
+            console.log("it matched!");
+            isEqual = [];
+            checker = true;
+        } else {
+            isEqual = [];
+            checker = false;
+        }
+    }
+}
 
 
 
 
 
+    // isEqual.push(randomImg.src);
+    // console.log(isEqual);
 
 
 
 
 
+// function to make the modal appear -> modalApparition()
+
+const modalApparition = () => {
+    modalWindow.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+}
+
+
+// function closing the modal window -> closeModal()
+
+const closeModal = () => {
+    modalWindow.classList.add('hidden');
+    overlay.classList.add('hidden');
+    window.location.reload();
+}
+
+overlay.addEventListener('click', closeModal);
+newGameBtn.addEventListener('click', closeModal);
 
 
 
