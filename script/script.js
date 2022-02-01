@@ -166,14 +166,19 @@ const imgList = [
 
 
 
+
+
 // __________creation of cards on the board -> cardArray[];
 
 const cardArray = [];
 
 function addCard () {
     
+    // creation of the wrapper
     const cardWrapper = document.createElement("div");
     cardWrapper.classList.add("card-wrapper");
+
+    // getting a parent div of the wrapper 
     const parentDiv = document.getElementById("the-container");
     
     for(let i=0; i < imgList.length; i++) {
@@ -186,6 +191,7 @@ function addCard () {
         cardArray.push(card);
     };
     
+    // insert the wrapper into parent div
     parentDiv.appendChild(cardWrapper);
     
 };
@@ -194,11 +200,15 @@ addCard();
 
 
 
+
+
 // __________restart game
 
 restartBtn.addEventListener('click', () => {
     window.location.reload();
 });
+
+
 
 
 
@@ -223,8 +233,9 @@ const randomNumberFromArray = (imgList) => {
 
 
 
-// __________function to flip the card -> flipCard(c);
 
+
+// __________function to flip the card -> flipCard(c);
 
 const flipCard = (c, img) => {
     c.classList.toggle('active-card');
@@ -237,7 +248,10 @@ const flipCard = (c, img) => {
 };
 
 
-// flip a card on a click
+
+
+
+// __________flip a card on a click
 
 let flippedCards = [];
 let selectedImgNumbers = [];
@@ -268,25 +282,24 @@ cardArray.forEach( (card) => {
                 } else {
                     checker = false;
                     selectedImgNumbers = [];
-                }
-                console.log(checker);
-            } 
-        } 
+                };
+            }; 
+        };
 
-        // automatically flipping card back after a delay
+        // verification if 2 cards flipped && img==img
         if(flippedCards.length === 2) {
-            // console.log(flippedCards);
-
-            setTimeout(function() {
-                flipCard(flippedCards[0], randomImg.image);
-                flipCard(flippedCards[1], randomImg.image);
+            if (!checker) {
+                setTimeout(function() {
+                    flipCard(flippedCards[0], randomImg.image);
+                    flipCard(flippedCards[1], randomImg.image);
+                    flippedCards = [];
+                }, 300);
+            } else {
                 flippedCards = [];
-            }, 300);
-
-        }
-
+            };
+        };
     });
-})
+});
 
 
 
@@ -373,5 +386,15 @@ cardArray.forEach( (card) => {
 // }
 
 
+// // automatically flipping card back after a delay
+        // if(flippedCards.length === 2) {
+            
 
+        //     setTimeout(function() {
+        //         flipCard(flippedCards[0], randomImg.image);
+        //         flipCard(flippedCards[1], randomImg.image);
+        //         flippedCards = [];
+        //     }, 300);
+
+        // }
 
