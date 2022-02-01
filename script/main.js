@@ -22,9 +22,6 @@ restartBtn.addEventListener('click', () => {
 });
 
 
-
-
-
 // fruit images array creation -> imgList[];
 
 const imgList = [
@@ -175,10 +172,7 @@ const imgList = [
 ];
 
 
-
-
-// creation of cards -> cardArray[];
-
+// creation of cards on the board -> cardArray[];
 
 const cardArray = [];
 
@@ -238,11 +232,31 @@ const randomNumberFromArray = (imgList) => {
 
 
 
+// function toggling a card
+
+const turnCard = (a,b) => {
+    a.classList.toggle('active-card');
+    b.classList.toggle('active-card');
+    if(a.classList.contains('active-card')) {
+        a.style.background = 'center / contain no-repeat url(' + randomImg.image + '), #fff';
+    } else {
+        a.style.background = '#E9C46A';
+    };
+    if(b.classList.contains('active-card')) {
+        b.style.background = 'center / contain no-repeat url(' + randomImg.image + '), #fff';
+    } else {
+        b.style.background = '#E9C46A';
+    };
+};
+
+
+
+
 // function that generates non-repeating images on the back of the cards (thx to the previous function)
 
-let chosenCards = [];
+let chosenCardsNumbers = [];
 let flippedCards = [];
-let compter = 0;
+let counter = 0;
 let clicked = null;
 
 cardArray.forEach(el => {
@@ -251,12 +265,12 @@ cardArray.forEach(el => {
     
     el.addEventListener('click', () => {
 
-        compter++;
-        if(compter < 2) {
-            clicked = el;
+       
+        if(counter < 2) { 
+            counter++;
+            // clicked = el;
+            flippedCards.push(el)
         }
-
-        console.log(clicked);
 
         el.classList.toggle('active-card');
         if(el.classList.contains('active-card')) {
@@ -265,39 +279,34 @@ cardArray.forEach(el => {
             el.style.background = '#E9C46A';
         };
 
-        checkIfPair(randomImg.name);
+        checkIfPair(randomImg.name);        
 
-        if(compter.length == 2) {
+        
+        console.log(counter);
+        console.log(checker);
+        if(counter == 2) {
             if(checker == false) {
 
-                el.style.background = '#E9C46A';
-                el.classList.toggle('active-card');
+                turnCard(flippedCards[0],flippedCards[1]);
 
-                clicked.style.background = '#E9C46A';
-                clicked.classList.toggle('active-card');
+                // el.style.background = '#E9C46A';
+                // el.classList.toggle('active-card');
+                // console.log(flippedCards[1]);
+                // flippedCards[0].style.background = '#E9C46A';
+                // flippedCards[0].classList.toggle('active-card');
 
-                compter = 0;
+                // flippedCards[1].style.background = '#E9C46A';
+                // flippedCards[1].classList.toggle('active-card');
+
+                // counter = 0;
             } 
         }
         
-
-        console.log(checker);
     });
 
 }); 
 
 
-
-// function toggling a card
-
-const turnCard = (e) => {
-    e.classList.toggle('active-card');
-    if(el.classList.contains('active-card')) {
-        el.style.background = 'center / contain no-repeat url(' + randomImg.image + '), #fff';
-    } else {
-        el.style.background = '#E9C46A';
-    };
-};
 
 
 
@@ -308,23 +317,20 @@ let checker;
 
 const checkIfPair = (e) => {
 
-    if(chosenCards.length != 2) {
+    if(chosenCardsNumbers.length != 2) {
 
-        chosenCards.push(e);
+        chosenCardsNumbers.push(e);
     
-        if(chosenCards.length === 2) {
+        if(chosenCardsNumbers.length === 2) {
 
-            console.log(chosenCards);
+            console.log("chosenCardsNumbers = " + chosenCardsNumbers);
             
             checker = '';
             
-            if (chosenCards[0] === chosenCards[1]) {
-                // console.log("it matched!");
+            if (chosenCardsNumbers[0] === chosenCardsNumbers[1]) {
                 checker = true;
-                // chosenCards = [];
             } else {
                 checker = false;
-                // chosenCards = [];
             };
 
             setter();
@@ -339,12 +345,12 @@ const setter = () => {
     setTimeout(() => {
 
     if(checker === false) {
-        console.log('no match');
+        // console.log('no match');
     } else {
-        console.log('match');
+        // console.log('match');
     }
 
-    chosenCards = [];
+    chosenCardsNumbers = [];
 
     }, 800);
 }
@@ -354,11 +360,11 @@ const setter = () => {
 // setInterval( () => {
 //     if(checker === false) {
         
-//         chosenCards[0].classList.toggle("active-card");
-//         chosenCards[1].classList.toggle("active-card");
-//         console.log(chosenCards);
+//         chosenCardsNumbers[0].classList.toggle("active-card");
+//         chosenCardsNumbers[1].classList.toggle("active-card");
+//         console.log(chosenCardsNumbers);
         
-//         // chosenCards = [];
+//         // chosenCardsNumbers = [];
 //         }
 // },200);
 
@@ -367,8 +373,8 @@ const setter = () => {
 
 
 
-// chosenCards.push(randomImg.src);
-// console.log(chosenCards);
+// chosenCardsNumbers.push(randomImg.src);
+// console.log(chosenCardsNumbers);
 
 
 
