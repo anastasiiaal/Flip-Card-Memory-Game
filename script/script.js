@@ -1,9 +1,9 @@
 // main screen
 
 const restartBtn = document.getElementById('restart-btn'); //ok
-const pairsLeft = document.getElementById('pairs-left');
+const pairsLeft = document.getElementById('pairs-left'); //ok
 const progressBar = document.getElementById('progress-bar');
-const timer = document.getElementById('timer-text');
+const timer = document.getElementById('timer-text'); //ok
 
 // modal window
 
@@ -42,54 +42,54 @@ const imgList = [
         name: '6',
         image: 'img/fruit6.png'
     },
-    {
-        name: '7',
-        image: 'img/fruit7.png'
-    },
-    {
-        name: '8',
-        image: 'img/fruit8.png'
-    },
-    {
-        name: '9',
-        image: 'img/fruit9.png'
-    },
-    {
-        name: '10',
-        image: 'img/fruit10.png'
-    },
-    {
-        name: '11',
-        image: 'img/fruit11.png'
-    },
-    {
-        name: '12',
-        image: 'img/fruit12.png'
-    },
-    {
-        name: '13',
-        image: 'img/fruit13.png'
-    },
-    {
-        name: '14',
-        image: 'img/fruit14.png'
-    },
-    {
-        name: '15',
-        image: 'img/fruit15.png'
-    },
-    {
-        name: '16',
-        image: 'img/fruit16.png'
-    },
-    {
-        name: '17',
-        image: 'img/fruit17.png'
-    },
-    {
-        name: '18',
-        image: 'img/fruit18.png'
-    },
+    // {
+    //     name: '7',
+    //     image: 'img/fruit7.png'
+    // },
+    // {
+    //     name: '8',
+    //     image: 'img/fruit8.png'
+    // },
+    // {
+    //     name: '9',
+    //     image: 'img/fruit9.png'
+    // },
+    // {
+    //     name: '10',
+    //     image: 'img/fruit10.png'
+    // },
+    // {
+    //     name: '11',
+    //     image: 'img/fruit11.png'
+    // },
+    // {
+    //     name: '12',
+    //     image: 'img/fruit12.png'
+    // },
+    // {
+    //     name: '13',
+    //     image: 'img/fruit13.png'
+    // },
+    // {
+    //     name: '14',
+    //     image: 'img/fruit14.png'
+    // },
+    // {
+    //     name: '15',
+    //     image: 'img/fruit15.png'
+    // },
+    // {
+    //     name: '16',
+    //     image: 'img/fruit16.png'
+    // },
+    // {
+    //     name: '17',
+    //     image: 'img/fruit17.png'
+    // },
+    // {
+    //     name: '18',
+    //     image: 'img/fruit18.png'
+    // },
     {
         name: '1',
         image: 'img/fruit1.png'
@@ -114,54 +114,54 @@ const imgList = [
         name: '6',
         image: 'img/fruit6.png'
     },
-    {
-        name: '7',
-        image: 'img/fruit7.png'
-    },
-    {
-        name: '8',
-        image: 'img/fruit8.png'
-    },
-    {
-        name: '9',
-        image: 'img/fruit9.png'
-    },
-    {
-        name: '10',
-        image: 'img/fruit10.png'
-    },
-    {
-        name: '11',
-        image: 'img/fruit11.png'
-    },
-    {
-        name: '12',
-        image: 'img/fruit12.png'
-    },
-    {
-        name: '13',
-        image: 'img/fruit13.png'
-    },
-    {
-        name: '14',
-        image: 'img/fruit14.png'
-    },
-    {
-        name: '15',
-        image: 'img/fruit15.png'
-    },
-    {
-        name: '16',
-        image: 'img/fruit16.png'
-    },
-    {
-        name: '17',
-        image: 'img/fruit17.png'
-    },
-    {
-        name: '18',
-        image: 'img/fruit18.png'
-    },
+    // {
+    //     name: '7',
+    //     image: 'img/fruit7.png'
+    // },
+    // {
+    //     name: '8',
+    //     image: 'img/fruit8.png'
+    // },
+    // {
+    //     name: '9',
+    //     image: 'img/fruit9.png'
+    // },
+    // {
+    //     name: '10',
+    //     image: 'img/fruit10.png'
+    // },
+    // {
+    //     name: '11',
+    //     image: 'img/fruit11.png'
+    // },
+    // {
+    //     name: '12',
+    //     image: 'img/fruit12.png'
+    // },
+    // {
+    //     name: '13',
+    //     image: 'img/fruit13.png'
+    // },
+    // {
+    //     name: '14',
+    //     image: 'img/fruit14.png'
+    // },
+    // {
+    //     name: '15',
+    //     image: 'img/fruit15.png'
+    // },
+    // {
+    //     name: '16',
+    //     image: 'img/fruit16.png'
+    // },
+    // {
+    //     name: '17',
+    //     image: 'img/fruit17.png'
+    // },
+    // {
+    //     name: '18',
+    //     image: 'img/fruit18.png'
+    // },
 ];
 
 
@@ -213,6 +213,33 @@ restartBtn.addEventListener('click', () => {
 
 
 
+// __________function to make the modal appear -> modalApparition()
+
+const modalApparition = () => {
+    modalWindow.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+};
+
+
+
+
+
+// __________function closing the modal window -> closeModal()
+
+const closeModal = () => {
+    modalWindow.classList.add('hidden');
+    overlay.classList.add('hidden');
+    window.location.reload();
+};
+
+overlay.addEventListener('click', closeModal);
+newGameBtn.addEventListener('click', closeModal);
+
+
+
+
+
+
 // __________function that checks if the number key from the imgList[] array has been taken (to avoid repetition)
 
 let imgTaken = [];
@@ -257,6 +284,8 @@ let flippedCards = [];
 let selectedImgNumbers = [];
 let checker;
 
+let pairCounter = 0;
+
 cardArray.forEach( (card) => {
 
     const randomImg = randomNumberFromArray(imgList);
@@ -275,7 +304,7 @@ cardArray.forEach( (card) => {
             
             if (selectedImgNumbers.length === 2) {
                 checker = '';
-                console.log(selectedImgNumbers);
+                // console.log(selectedImgNumbers);
                 if(selectedImgNumbers[0] === selectedImgNumbers[1]) {
                     checker = true;
                     selectedImgNumbers = [];
@@ -286,7 +315,7 @@ cardArray.forEach( (card) => {
             }; 
         };
 
-        // verification if 2 cards flipped && img==img
+        // verification if 2 cards flipped && img===img
         if(flippedCards.length === 2) {
             if (!checker) {
                 setTimeout(function() {
@@ -296,6 +325,12 @@ cardArray.forEach( (card) => {
                 }, 300);
             } else {
                 flippedCards = [];
+                pairCounter++;
+                pairsLeft.innerHTML = pairCounter;
+
+                if(pairCounter === 6) {
+                    modalApparition();
+                };
             };
         };
     });
@@ -306,18 +341,21 @@ cardArray.forEach( (card) => {
 
 
 
+// __________function timer
 
+const departMinutes = 4;
+let timeCounter = departMinutes * 60;
 
+setInterval(() => {
+    let mins = parseInt(timeCounter / 60, 10);
+    let seconds = parseInt(timeCounter % 60, 10);
 
+    mins = mins < 10 ? "0" + mins : mins;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-
-
-
-
-
-
-
-
+    timer.innerText = `${mins}:${seconds}`;
+    timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
+}, 1000);
 
 
 

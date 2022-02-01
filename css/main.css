@@ -83,7 +83,7 @@ button:hover {
 }
 
 .pairs-left > h1 {
-    margin-right: 13px;
+    margin-right: 10px;
 }
 
 
@@ -115,7 +115,7 @@ button:hover {
     width: 0;
     height: 100%;
     background: #EE494D;
-    animation: load 60s infinite;
+    animation: load 320s infinite;
 }
 
 @keyframes load {
