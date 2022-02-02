@@ -94,13 +94,7 @@ button:hover {
     align-items: center;
 }
 
-/* #progressbar {
-    width: 100%;
-    border: none;
-    margin-right: 26px;
-} */
-
-.progress {
+#progress {
     position: relative;
     width: 100%;
     margin-right: 30px;
@@ -115,10 +109,10 @@ button:hover {
     width: 0;
     height: 100%;
     background: #EE494D;
-    animation: load 320s infinite;
+    /* animation: load 320s infinite; */
 }
 
-@keyframes load {
+/* @keyframes load {
     0% {
         width: 0;
     }
@@ -126,7 +120,7 @@ button:hover {
     100% {
         width: 100%;
     }
-}
+} */
 
 p.number {
     font-family: 'Source Code Pro', monospace;
@@ -160,7 +154,7 @@ p.number {
 .active-card {
     transition: all .2s ease;
     background-color: #fff;
-    /* background: center / contain no-repeat url("../img/fruit01.png"), #fff; */
+    pointer-events: none;
 }
 
 
@@ -168,7 +162,7 @@ p.number {
 
 /*************** modal window *****************/
 
-#overlay {
+#overlay, #overlay-start {
     position: absolute;
     top: 0;
     left: 0;
@@ -179,7 +173,7 @@ p.number {
     /* display: none; */
 }
 
-#modal {
+#modal, #modal-start {
     background-color: #fff;
     position: absolute;
     left: 50%;
@@ -202,7 +196,7 @@ p.number {
     transform: translate(15px, 0);
 }
 
-#new-btn {
+#new-btn, #start-btn {
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
     color: #ffffff;
@@ -244,7 +238,7 @@ p.number {
         width: 540px;
     }
 
-    #modal {
+    #modal, #modal-start {
         width: 400px;
     }
 }
@@ -271,7 +265,7 @@ p.number {
         font-size: 1rem;
     }
 
-    #modal {
+    #modal, #modal-start {
         width: 90%;
     }
 

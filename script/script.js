@@ -2,10 +2,17 @@
 
 const restartBtn = document.getElementById('restart-btn'); //ok
 const pairsLeft = document.getElementById('pairs-left'); //ok
-const progressBar = document.getElementById('progress-bar');
+// const progress = document.getElementById('progress');
+// const progressBar = document.getElementById('progress-bar');
 const timer = document.getElementById('timer-text'); //ok
 
-// modal window
+// modal start
+
+const overlayStart = document.getElementById('overlay-start'); 
+const modalWindowStart = document.getElementById('modal-start'); 
+const startGameBtn = document.getElementById('start-btn');
+
+// modal window (main)
 
 const overlay = document.getElementById('overlay'); //ok
 const modalWindow = document.getElementById('modal'); //ok
@@ -13,6 +20,8 @@ const startGame = document.getElementById('start-game');
 const newScore = document.getElementById('new-score');
 const bestScore = document.querySelectorAll('li');
 const newGameBtn = document.getElementById('new-btn'); //ok
+
+
 
 
 // __________fruit images array creation -> imgList[];
@@ -30,18 +39,18 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    {
-        name: '4',
-        image: 'img/fruit4.png'
-    },
-    {
-        name: '5',
-        image: 'img/fruit5.png'
-    },
-    {
-        name: '6',
-        image: 'img/fruit6.png'
-    },
+    // {
+    //     name: '4',
+    //     image: 'img/fruit4.png'
+    // },
+    // {
+    //     name: '5',
+    //     image: 'img/fruit5.png'
+    // },
+    // {
+    //     name: '6',
+    //     image: 'img/fruit6.png'
+    // },
     // {
     //     name: '7',
     //     image: 'img/fruit7.png'
@@ -102,18 +111,18 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    {
-        name: '4',
-        image: 'img/fruit4.png'
-    },
-    {
-        name: '5',
-        image: 'img/fruit5.png'
-    },
-    {
-        name: '6',
-        image: 'img/fruit6.png'
-    },
+    // {
+    //     name: '4',
+    //     image: 'img/fruit4.png'
+    // },
+    // {
+    //     name: '5',
+    //     image: 'img/fruit5.png'
+    // },
+    // {
+    //     name: '6',
+    //     image: 'img/fruit6.png'
+    // },
     // {
     //     name: '7',
     //     image: 'img/fruit7.png'
@@ -224,12 +233,12 @@ const modalApparition = () => {
 
 
 
-// __________function closing the modal window -> closeModal()
+// __________function closing the main modal window -> closeModal()
 
 const closeModal = () => {
+    window.location.reload();
     modalWindow.classList.add('hidden');
     overlay.classList.add('hidden');
-    window.location.reload();
 };
 
 overlay.addEventListener('click', closeModal);
@@ -240,19 +249,37 @@ newGameBtn.addEventListener('click', closeModal);
 
 
 
+// __________function closing the starting modal window -> closeModalStart()
+
+const closeModalStart = () => {
+    modalWindowStart.classList.add('hidden');
+    overlayStart.classList.add('hidden');
+};
+
+overlayStart.addEventListener('click', closeModalStart);
+startGameBtn.addEventListener('click', closeModalStart);
+
+
+
+
+
 // __________function that checks if the number key from the imgList[] array has been taken (to avoid repetition)
 
 let imgTaken = [];
 
 const randomNumberFromArray = (imgList) => {
+
     if (imgTaken.length === 0) {
+        // inserting all possible indexes of images into an array
         for (let i=0; i<imgList.length; i++) imgTaken.push(i);
     };
 
+    // generating the random index
     let randomValue = Math.floor(Math.random() * imgTaken.length);
 
     let indexFromAllImages = imgTaken[randomValue];
 
+    // removing the used index from the array to avoid repetition of an index
     imgTaken.splice(randomValue, 1);
 
     return imgList[indexFromAllImages];
@@ -322,13 +349,13 @@ cardArray.forEach( (card) => {
                     flipCard(flippedCards[0], randomImg.image);
                     flipCard(flippedCards[1], randomImg.image);
                     flippedCards = [];
-                }, 300);
+                }, 200);
             } else {
                 flippedCards = [];
                 pairCounter++;
                 pairsLeft.innerHTML = pairCounter;
 
-                if(pairCounter === 6) {
+                if(pairCounter === 3) {
                     modalApparition();
                 };
             };
@@ -361,10 +388,27 @@ setInterval(() => {
 
 
 
+// __________progress bar 
 
-
-
-
+var i = 0;
+function progressBarStart() {
+    if (i == 0) {
+        i = 1;
+        var progressBar = document.getElementById("progress-bar");
+        var width = 1;
+        var id = setInterval(frame, 2435);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                i = 0;
+            } else {
+                width++;
+                progressBar.style.width = width + "%";
+            };
+        };
+    };
+};
+progressBarStart();
 
 
 
