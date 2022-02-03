@@ -226,6 +226,8 @@ function progressBarStart() {
             if (width >= 100) {
                 clearInterval(id);
                 i = 0;
+            } else if (!modalWindow.classList.contains('hidden')) {
+                clearInterval(id);
             } else {
                 width++;
                 progressBar.style.width = width + "%";
@@ -282,18 +284,20 @@ newGameBtn.addEventListener('click', closeModal);
 
 // __________function closing the starting modal window -> closeModalStart()
 
+let timerFunction;
+
 const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
     overlayStart.classList.add('hidden');
-
+    
     // call for the function to start the progress bar
     progressBarStart();
-
+ 
     // function to start the timer
     const departMinutes = 4;
     let timeCounter = departMinutes * 60;
-
-    setInterval(() => {
+    
+    timerFunction = setInterval(() => {
         let mins = parseInt(timeCounter / 60, 10);
         let seconds = parseInt(timeCounter % 60, 10);
 
@@ -303,7 +307,7 @@ const closeModalStart = () => {
         timer.innerText = `${mins}:${seconds}`;
         timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
     }, 1000);
-
+    
     // setting a timeout to call for the modal window with "Time is up"
     setTimeout(function() {
         if(modalWindow.classList.contains('hidden')) {
@@ -311,7 +315,7 @@ const closeModalStart = () => {
             newScore.innerHTML = "Sorry, your time is up!";
         }
     }, 242000);
-};
+};   
 
 
 // calling the previous function
@@ -417,6 +421,8 @@ cardArray.forEach( (card) => {
 
                 if(pairCounter === 3) {
                     modalApparition();
+                    // stop interval once the game is over
+                    clearInterval(timerFunction);
                 };
             };
         };
@@ -425,80 +431,4 @@ cardArray.forEach( (card) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // function verifying if 2 images are equal or not
-
-// let checker;
-// let chosenCardsNumbers = [];
-
-// const checkIfPair = (e) => {
-//     if(chosenCardsNumbers.length !== 2) {
-//         chosenCardsNumbers.push(e);
-
-//         if(chosenCardsNumbers === 2) {
-//             checker = '';
-
-//             if(chosenCardsNumbers[0] === chosenCardsNumbers[1]) {
-//                 checker = true;
-//             } else {
-//                 checker = false;
-//             }
-
-//             console.log(checker);
-//         }
-//     }
-// }
-
-
-// // automatically flipping card back after a delay
-        // if(flippedCards.length === 2) {
-            
-
-        //     setTimeout(function() {
-        //         flipCard(flippedCards[0], randomImg.image);
-        //         flipCard(flippedCards[1], randomImg.image);
-        //         flippedCards = [];
-        //     }, 300);
-
-        // }
 

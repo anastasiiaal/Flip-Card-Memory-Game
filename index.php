@@ -2,10 +2,7 @@
 
 require_once 'connect.php';
 
-$game = $db->query('SELECT `score`, `date` FROM `best-time`');
-
-
-$scoreQuery = $db->query("SELECT `score` FROM `best-time` ORDER BY `best-time`.`score` ASC LIMIT 5");
+$scoreQuery = $db->query("SELECT `score` FROM `best-time` ORDER BY `score` ASC LIMIT 5");
 $score = $scoreQuery->fetchAll(PDO::FETCH_ASSOC);
 
 // var_dump($score);
@@ -28,7 +25,7 @@ $score = $scoreQuery->fetchAll(PDO::FETCH_ASSOC);
     <header>
         <div class="container dflex space-between">
             <button id="restart-btn" class="dflex">
-                    Restart <img src="img/restart.svg" alt="Restart">
+                Restart <img src="img/restart.svg" alt="Restart">
             </button>
             <div class="pairs-left dflex">
                 <h1 id="pairs-left">
@@ -62,12 +59,8 @@ foreach($score as $s) {
 ?>
                         <li><?=$s['score']?></li>
 <?php 
-}
+};
 ?>
-                        <!-- <li>00:00</li>
-                        <li>00:00</li>
-                        <li>00:00</li>
-                        <li>00:00</li> -->
                     </ol>
                     <button id="new-btn">Got it!</button>
                 </div>
