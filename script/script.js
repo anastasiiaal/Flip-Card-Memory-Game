@@ -269,6 +269,9 @@ const closeModal = () => {
     overlay.classList.add('hidden');
 };
 
+
+// calling the previous function
+
 overlay.addEventListener('click', closeModal);
 newGameBtn.addEventListener('click', closeModal);
 
@@ -283,9 +286,10 @@ const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
     overlayStart.classList.add('hidden');
 
+    // call for the function to start the progress bar
     progressBarStart();
 
-    // function timer
+    // function to start the timer
     const departMinutes = 4;
     let timeCounter = departMinutes * 60;
 
@@ -300,6 +304,7 @@ const closeModalStart = () => {
         timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
     }, 1000);
 
+    // setting a timeout to call for the modal window with "Time is up"
     setTimeout(function() {
         if(modalWindow.classList.contains('hidden')) {
             modalApparition();
@@ -307,6 +312,9 @@ const closeModalStart = () => {
         }
     }, 242000);
 };
+
+
+// calling the previous function
 
 overlayStart.addEventListener('click', closeModalStart);
 startGameBtn.addEventListener('click', closeModalStart);
