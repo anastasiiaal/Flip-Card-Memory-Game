@@ -40,30 +40,30 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    // {
-    //     name: '4',
-    //     image: 'img/fruit4.png'
-    // },
-    // {
-    //     name: '5',
-    //     image: 'img/fruit5.png'
-    // },
-    // {
-    //     name: '6',
-    //     image: 'img/fruit6.png'
-    // },
-    // {
-    //     name: '7',
-    //     image: 'img/fruit7.png'
-    // },
-    // {
-    //     name: '8',
-    //     image: 'img/fruit8.png'
-    // },
-    // {
-    //     name: '9',
-    //     image: 'img/fruit9.png'
-    // },
+    {
+        name: '4',
+        image: 'img/fruit4.png'
+    },
+    {
+        name: '5',
+        image: 'img/fruit5.png'
+    },
+    {
+        name: '6',
+        image: 'img/fruit6.png'
+    },
+    {
+        name: '7',
+        image: 'img/fruit7.png'
+    },
+    {
+        name: '8',
+        image: 'img/fruit8.png'
+    },
+    {
+        name: '9',
+        image: 'img/fruit9.png'
+    },
     // {
     //     name: '10',
     //     image: 'img/fruit10.png'
@@ -112,30 +112,30 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    // {
-    //     name: '4',
-    //     image: 'img/fruit4.png'
-    // },
-    // {
-    //     name: '5',
-    //     image: 'img/fruit5.png'
-    // },
-    // {
-    //     name: '6',
-    //     image: 'img/fruit6.png'
-    // },
-    // {
-    //     name: '7',
-    //     image: 'img/fruit7.png'
-    // },
-    // {
-    //     name: '8',
-    //     image: 'img/fruit8.png'
-    // },
-    // {
-    //     name: '9',
-    //     image: 'img/fruit9.png'
-    // },
+    {
+        name: '4',
+        image: 'img/fruit4.png'
+    },
+    {
+        name: '5',
+        image: 'img/fruit5.png'
+    },
+    {
+        name: '6',
+        image: 'img/fruit6.png'
+    },
+    {
+        name: '7',
+        image: 'img/fruit7.png'
+    },
+    {
+        name: '8',
+        image: 'img/fruit8.png'
+    },
+    {
+        name: '9',
+        image: 'img/fruit9.png'
+    },
     // {
     //     name: '10',
     //     image: 'img/fruit10.png'
@@ -415,7 +415,7 @@ cardArray.forEach( (card) => {
                 pairCounter++;
                 pairsLeft.innerHTML = pairCounter;
 
-                if(pairCounter === 3) {
+                if(pairCounter === 9) {
                     modalApparition();
                 };
             };
