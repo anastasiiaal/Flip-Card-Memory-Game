@@ -8,9 +8,10 @@ const timer = document.getElementById('timer-text'); //ok
 
 // modal start
 
-const overlayStart = document.getElementById('overlay-start'); 
-const modalWindowStart = document.getElementById('modal-start'); 
-const startGameBtn = document.getElementById('start-btn');
+const overlayStart = document.getElementById('overlay-start'); //ok
+const modalWindowStart = document.getElementById('modal-start'); //ok
+const startGameBtn = document.getElementById('start-btn'); //ok
+const modalStartText = document.getElementById('modal-start__text');
 
 // modal window (main)
 
@@ -281,6 +282,7 @@ newGameBtn.addEventListener('click', closeModal);
 const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
     overlayStart.classList.add('hidden');
+
     progressBarStart();
 
     // function timer
@@ -297,6 +299,13 @@ const closeModalStart = () => {
         timer.innerText = `${mins}:${seconds}`;
         timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
     }, 1000);
+
+    setTimeout(function() {
+        if(modalWindow.classList.contains('hidden')) {
+            modalApparition();
+            newScore.innerHTML = "Sorry, your time is up!";
+        }
+    }, 242000);
 };
 
 overlayStart.addEventListener('click', closeModalStart);
@@ -405,9 +414,6 @@ cardArray.forEach( (card) => {
         };
     });
 });
-
-
-
 
 
 
