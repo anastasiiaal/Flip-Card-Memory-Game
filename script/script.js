@@ -312,7 +312,7 @@ const closeModalStart = () => {
     setTimeout(function() {
         if(modalWindow.classList.contains('hidden')) {
             modalApparition();
-            newScore.innerHTML = "Sorry, your time is up!";
+            newScore.innerHTML = "Sorry, the time is up! Try again";
         }
     }, 242000);
 };   

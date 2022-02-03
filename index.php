@@ -5,8 +5,6 @@ require_once 'connect.php';
 $scoreQuery = $db->query("SELECT `score` FROM `best-time` ORDER BY `score` ASC LIMIT 5");
 $score = $scoreQuery->fetchAll(PDO::FETCH_ASSOC);
 
-// var_dump($score);
-
 ?>
 
 <!DOCTYPE html>
