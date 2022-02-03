@@ -1,3 +1,17 @@
+<?php 
+
+require_once 'connect.php';
+
+$game = $db->query('SELECT `score`, `date` FROM `best-time`');
+
+
+$scoreQuery = $db->query("SELECT `score` FROM `best-time` ORDER BY `best-time`.`score` ASC LIMIT 5");
+$score = $scoreQuery->fetchAll(PDO::FETCH_ASSOC);
+
+// var_dump($score);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +35,7 @@
                     0
                 </h1>
                 <h2>
-                    / 9
+                    / 18
                 </h2>
             </div>
         </div>
@@ -43,11 +57,17 @@
                     <h3 id="new-score">Your new time is: </h3>
                     <h3>Your best time so far:</h3>
                     <ol>
+<?php 
+foreach($score as $s) {
+?>
+                        <li><?=$s['score']?></li>
+<?php 
+}
+?>
+                        <!-- <li>00:00</li>
                         <li>00:00</li>
                         <li>00:00</li>
-                        <li>00:00</li>
-                        <li>00:00</li>
-                        <li>00:00</li>
+                        <li>00:00</li> -->
                     </ol>
                     <button id="new-btn">Got it!</button>
                 </div>
