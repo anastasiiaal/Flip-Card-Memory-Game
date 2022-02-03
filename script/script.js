@@ -211,6 +211,33 @@ addCard();
 
 
 
+
+// __________progress bar 
+
+var i = 0;
+function progressBarStart() {
+    if (i == 0) {
+        i = 1;
+        var progressBar = document.getElementById("progress-bar");
+        var width = 1;
+        var id = setInterval(frame, 2435);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                i = 0;
+            } else {
+                width++;
+                progressBar.style.width = width + "%";
+            };
+        };
+    };
+};
+
+
+
+
+
+
 // __________restart game
 
 restartBtn.addEventListener('click', () => {
@@ -254,6 +281,22 @@ newGameBtn.addEventListener('click', closeModal);
 const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
     overlayStart.classList.add('hidden');
+    progressBarStart();
+
+    // function timer
+    const departMinutes = 4;
+    let timeCounter = departMinutes * 60;
+
+    setInterval(() => {
+        let mins = parseInt(timeCounter / 60, 10);
+        let seconds = parseInt(timeCounter % 60, 10);
+
+        mins = mins < 10 ? "0" + mins : mins;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timer.innerText = `${mins}:${seconds}`;
+        timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
+    }, 1000);
 };
 
 overlayStart.addEventListener('click', closeModalStart);
@@ -368,47 +411,12 @@ cardArray.forEach( (card) => {
 
 
 
-// __________function timer
-
-const departMinutes = 4;
-let timeCounter = departMinutes * 60;
-
-setInterval(() => {
-    let mins = parseInt(timeCounter / 60, 10);
-    let seconds = parseInt(timeCounter % 60, 10);
-
-    mins = mins < 10 ? "0" + mins : mins;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    timer.innerText = `${mins}:${seconds}`;
-    timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
-}, 1000);
 
 
 
 
 
-// __________progress bar 
 
-var i = 0;
-function progressBarStart() {
-    if (i == 0) {
-        i = 1;
-        var progressBar = document.getElementById("progress-bar");
-        var width = 1;
-        var id = setInterval(frame, 2435);
-        function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-                i = 0;
-            } else {
-                width++;
-                progressBar.style.width = width + "%";
-            };
-        };
-    };
-};
-progressBarStart();
 
 
 
