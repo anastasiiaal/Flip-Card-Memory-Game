@@ -1,17 +1,16 @@
 // main screen
 
 const restartBtn = document.getElementById('restart-btn'); //ok
+const clickCounter = document.getElementById('click-counter'); //ok
 const pairsLeft = document.getElementById('pairs-left'); //ok
-// const progress = document.getElementById('progress');
-// const progressBar = document.getElementById('progress-bar');
 const timer = document.getElementById('timer-text'); //ok
+const timerProgress = document.getElementById('timer-progress');
 
 // modal start
 
 const overlayStart = document.getElementById('overlay-start'); //ok
 const modalWindowStart = document.getElementById('modal-start'); //ok
 const startGameBtn = document.getElementById('start-btn'); //ok
-const modalStartText = document.getElementById('modal-start__text');
 
 // modal window (main)
 
@@ -20,6 +19,7 @@ const modalWindow = document.getElementById('modal'); //ok
 const startGame = document.getElementById('start-game');
 const newScore = document.getElementById('new-score');
 const bestScore = document.querySelectorAll('li');
+const nuOfClicks = document.getElementById('new-score-span');
 const newGameBtn = document.getElementById('new-btn'); //ok
 
 
@@ -240,6 +240,16 @@ function progressBarStart() {
 
 
 
+// // __________function counting the time to stock in the DB
+
+// const winTimeCounter = (t) => {
+//     let time = 240;
+//     let finalTime = time 
+// }
+
+
+
+
 
 // __________restart game
 
@@ -307,6 +317,9 @@ const closeModalStart = () => {
         timer.innerText = `${mins}:${seconds}`;
         timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
     }, 1000);
+
+    // fonction to start a stopwatch (timerProgress)
+    
     
     // setting a timeout to call for the modal window with "Time is up"
     setTimeout(function() {
@@ -376,12 +389,17 @@ let selectedImgNumbers = [];
 let checker;
 
 let pairCounter = 0;
+let clicksCounter = 0;
 
 cardArray.forEach( (card) => {
 
     const randomImg = randomNumberFromArray(imgList);
 
     card.addEventListener('click', () => {
+
+        // counts the n° of clicks to win the game
+        clicksCounter++;
+        clickCounter.innerHTML = clicksCounter + ' click(s)';
 
         // on click -> flip a card to show the img
         flipCard(card, randomImg.image);
@@ -410,6 +428,9 @@ cardArray.forEach( (card) => {
         if(flippedCards.length === 2) {
             if (!checker) {
                 setTimeout(function() {
+                    // card.click(function(event){
+                    //     event.stopPropagation();
+                    // });
                     flipCard(flippedCards[0], randomImg.image);
                     flipCard(flippedCards[1], randomImg.image);
                     flippedCards = [];
@@ -420,7 +441,10 @@ cardArray.forEach( (card) => {
                 pairsLeft.innerHTML = pairCounter;
 
                 if(pairCounter === 3) {
+                    // call the modal once the game is over
                     modalApparition();
+                    // insert n° of clicks into the table of the modal
+                    nuOfClicks.innerHTML = '(in ' + clicksCounter + ' clicks)';
                     // stop interval once the game is over
                     clearInterval(timerFunction);
                 };

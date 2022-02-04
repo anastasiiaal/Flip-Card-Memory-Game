@@ -34,7 +34,7 @@ h3 {
     margin: 5px auto;
 }
 
-li {
+li, li > span {
     color: #441104;
     font-family: 'Source Code Pro', monospace;
     font-size: 1.25rem;
@@ -62,6 +62,7 @@ header {
 
 header > .container {
     padding: 20px 0;
+    align-items: center;
 }
 
 button:hover {
@@ -80,6 +81,10 @@ button:hover {
 
 #restart-btn > img {
     margin-left: 15px;
+}
+
+#click-counter {
+    color: #fff;
 }
 
 .pairs-left {
@@ -209,6 +214,10 @@ p.number {
 
 .hidden {
     visibility: hidden;
+}
+
+.blocked {
+    pointer-events: none;
 }
 
 
