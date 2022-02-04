@@ -6,6 +6,8 @@ const pairsLeft = document.getElementById('pairs-left'); //ok
 const timer = document.getElementById('timer-text'); //ok
 const timerProgress = document.getElementById('timer-progress');
 
+
+
 // modal start
 
 const overlayStart = document.getElementById('overlay-start'); //ok
@@ -21,7 +23,7 @@ const newScore = document.getElementById('new-score');
 const bestScore = document.querySelectorAll('li');
 const nuOfClicks = document.getElementById('new-score-span');
 const newGameBtn = document.getElementById('new-btn'); //ok
-
+const newScoreTime = document.getElementById('new-score-time');
 
 
 
@@ -40,66 +42,66 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    // {
-    //     name: '4',
-    //     image: 'img/fruit4.png'
-    // },
-    // {
-    //     name: '5',
-    //     image: 'img/fruit5.png'
-    // },
-    // {
-    //     name: '6',
-    //     image: 'img/fruit6.png'
-    // },
-    // {
-    //     name: '7',
-    //     image: 'img/fruit7.png'
-    // },
-    // {
-    //     name: '8',
-    //     image: 'img/fruit8.png'
-    // },
-    // {
-    //     name: '9',
-    //     image: 'img/fruit9.png'
-    // },
-    // {
-    //     name: '10',
-    //     image: 'img/fruit10.png'
-    // },
-    // {
-    //     name: '11',
-    //     image: 'img/fruit11.png'
-    // },
-    // {
-    //     name: '12',
-    //     image: 'img/fruit12.png'
-    // },
-    // {
-    //     name: '13',
-    //     image: 'img/fruit13.png'
-    // },
-    // {
-    //     name: '14',
-    //     image: 'img/fruit14.png'
-    // },
-    // {
-    //     name: '15',
-    //     image: 'img/fruit15.png'
-    // },
-    // {
-    //     name: '16',
-    //     image: 'img/fruit16.png'
-    // },
-    // {
-    //     name: '17',
-    //     image: 'img/fruit17.png'
-    // },
-    // {
-    //     name: '18',
-    //     image: 'img/fruit18.png'
-    // },
+    {
+        name: '4',
+        image: 'img/fruit4.png'
+    },
+    {
+        name: '5',
+        image: 'img/fruit5.png'
+    },
+    {
+        name: '6',
+        image: 'img/fruit6.png'
+    },
+    {
+        name: '7',
+        image: 'img/fruit7.png'
+    },
+    {
+        name: '8',
+        image: 'img/fruit8.png'
+    },
+    {
+        name: '9',
+        image: 'img/fruit9.png'
+    },
+    {
+        name: '10',
+        image: 'img/fruit10.png'
+    },
+    {
+        name: '11',
+        image: 'img/fruit11.png'
+    },
+    {
+        name: '12',
+        image: 'img/fruit12.png'
+    },
+    {
+        name: '13',
+        image: 'img/fruit13.png'
+    },
+    {
+        name: '14',
+        image: 'img/fruit14.png'
+    },
+    {
+        name: '15',
+        image: 'img/fruit15.png'
+    },
+    {
+        name: '16',
+        image: 'img/fruit16.png'
+    },
+    {
+        name: '17',
+        image: 'img/fruit17.png'
+    },
+    {
+        name: '18',
+        image: 'img/fruit18.png'
+    },
     {
         name: '1',
         image: 'img/fruit1.png'
@@ -112,66 +114,66 @@ const imgList = [
         name: '3',
         image: 'img/fruit3.png'
     },
-    // {
-    //     name: '4',
-    //     image: 'img/fruit4.png'
-    // },
-    // {
-    //     name: '5',
-    //     image: 'img/fruit5.png'
-    // },
-    // {
-    //     name: '6',
-    //     image: 'img/fruit6.png'
-    // },
-    // {
-    //     name: '7',
-    //     image: 'img/fruit7.png'
-    // },
-    // {
-    //     name: '8',
-    //     image: 'img/fruit8.png'
-    // },
-    // {
-    //     name: '9',
-    //     image: 'img/fruit9.png'
-    // },
-    // {
-    //     name: '10',
-    //     image: 'img/fruit10.png'
-    // },
-    // {
-    //     name: '11',
-    //     image: 'img/fruit11.png'
-    // },
-    // {
-    //     name: '12',
-    //     image: 'img/fruit12.png'
-    // },
-    // {
-    //     name: '13',
-    //     image: 'img/fruit13.png'
-    // },
-    // {
-    //     name: '14',
-    //     image: 'img/fruit14.png'
-    // },
-    // {
-    //     name: '15',
-    //     image: 'img/fruit15.png'
-    // },
-    // {
-    //     name: '16',
-    //     image: 'img/fruit16.png'
-    // },
-    // {
-    //     name: '17',
-    //     image: 'img/fruit17.png'
-    // },
-    // {
-    //     name: '18',
-    //     image: 'img/fruit18.png'
-    // },
+    {
+        name: '4',
+        image: 'img/fruit4.png'
+    },
+    {
+        name: '5',
+        image: 'img/fruit5.png'
+    },
+    {
+        name: '6',
+        image: 'img/fruit6.png'
+    },
+    {
+        name: '7',
+        image: 'img/fruit7.png'
+    },
+    {
+        name: '8',
+        image: 'img/fruit8.png'
+    },
+    {
+        name: '9',
+        image: 'img/fruit9.png'
+    },
+    {
+        name: '10',
+        image: 'img/fruit10.png'
+    },
+    {
+        name: '11',
+        image: 'img/fruit11.png'
+    },
+    {
+        name: '12',
+        image: 'img/fruit12.png'
+    },
+    {
+        name: '13',
+        image: 'img/fruit13.png'
+    },
+    {
+        name: '14',
+        image: 'img/fruit14.png'
+    },
+    {
+        name: '15',
+        image: 'img/fruit15.png'
+    },
+    {
+        name: '16',
+        image: 'img/fruit16.png'
+    },
+    {
+        name: '17',
+        image: 'img/fruit17.png'
+    },
+    {
+        name: '18',
+        image: 'img/fruit18.png'
+    },
 ];
 
 
@@ -240,17 +242,6 @@ function progressBarStart() {
 
 
 
-// // __________function counting the time to stock in the DB
-
-// const winTimeCounter = (t) => {
-//     let time = 240;
-//     let finalTime = time 
-// }
-
-
-
-
-
 // __________restart game
 
 restartBtn.addEventListener('click', () => {
@@ -295,6 +286,7 @@ newGameBtn.addEventListener('click', closeModal);
 // __________function closing the starting modal window -> closeModalStart()
 
 let timerFunction;
+let y;
 
 const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
@@ -320,6 +312,28 @@ const closeModalStart = () => {
 
     // fonction to start a stopwatch (timerProgress)
     
+    let secondLeft = 0;
+    let minuteLeft = 0; 
+    
+    
+    function countDown() {
+        let minu;
+        let seco;
+        stopI = setInterval(() => {
+            secondLeft++;
+            if (secondLeft === 59) {
+                minuteLeft++;
+                secondLeft = 0;
+            }
+            secondLeft < 10 ? (seco = `0${secondLeft}`) : (seco = `${secondLeft}`);
+            minuteLeft < 10 ? (minu = `0${minuteLeft}`) : (minu = `${minuteLeft}`);
+            timerProgress.innerHTML = `00:${minu}:${seco}`;
+            y = '00:' + minu + ':' + seco;
+        }, 1000);
+    }
+
+    countDown();
+
     
     // setting a timeout to call for the modal window with "Time is up"
     setTimeout(function() {
@@ -440,13 +454,15 @@ cardArray.forEach( (card) => {
                 pairCounter++;
                 pairsLeft.innerHTML = pairCounter;
 
-                if(pairCounter === 3) {
+                if(pairCounter === 18) {
                     // call the modal once the game is over
                     modalApparition();
                     // insert n° of clicks into the table of the modal
                     nuOfClicks.innerHTML = '(in ' + clicksCounter + ' clicks)';
                     // stop interval once the game is over
                     clearInterval(timerFunction);
+                    clearInterval(stopI);
+                    newScoreTime.innerHTML = y;
                 };
             };
         };
