@@ -4,9 +4,7 @@ const restartBtn = document.getElementById('restart-btn'); //ok
 const clickCounter = document.getElementById('click-counter'); //ok
 const pairsLeft = document.getElementById('pairs-left'); //ok
 const timer = document.getElementById('timer-text'); //ok
-const timerProgress = document.getElementById('timer-progress');
-
-
+const timerProgress = document.getElementById('timer-progress'); // ok
 
 // modal start
 
@@ -18,16 +16,15 @@ const startGameBtn = document.getElementById('start-btn'); //ok
 
 const overlay = document.getElementById('overlay'); //ok
 const modalWindow = document.getElementById('modal'); //ok
-const startGame = document.getElementById('start-game');
-const newScore = document.getElementById('new-score');
-const bestScore = document.querySelectorAll('li');
-const nuOfClicks = document.getElementById('new-score-span');
+const newScore = document.getElementById('new-score'); // ok
+const newScoreTime = document.getElementById('new-score-time'); // ok
+const nuOfClicks = document.getElementById('new-score-span'); // ok
+// const bestScore = document.querySelectorAll('li');
 const newGameBtn = document.getElementById('new-btn'); //ok
-const newScoreTime = document.getElementById('new-score-time');
 
 
 
-// __________fruit images array creation -> imgList[];
+// __________fruit images array creation -> imgList[]
 
 const imgList = [
     {
@@ -180,7 +177,7 @@ const imgList = [
 
 
 
-// __________creation of cards on the board -> cardArray[];
+// __________creation of cards on the board -> cardArray[]
 
 const cardArray = [];
 
@@ -190,7 +187,7 @@ function addCard () {
     const cardWrapper = document.createElement("div");
     cardWrapper.classList.add("card-wrapper");
 
-    // getting a parent div of the wrapper 
+    // getting a parent div of the wrapper to insert into
     const parentDiv = document.getElementById("the-container");
     
     for(let i=0; i < imgList.length; i++) {
@@ -214,8 +211,7 @@ addCard();
 
 
 
-
-// __________progress bar 
+// __________progress bar -> progressBarStart()
 
 var i = 0;
 function progressBarStart() {
@@ -242,12 +238,11 @@ function progressBarStart() {
 
 
 
-// __________restart game
+// __________restart game button action
 
 restartBtn.addEventListener('click', () => {
     window.location.reload();
 });
-
 
 
 
@@ -286,7 +281,7 @@ newGameBtn.addEventListener('click', closeModal);
 // __________function closing the starting modal window -> closeModalStart()
 
 let timerFunction;
-let y;
+let timerToDb;
 
 const closeModalStart = () => {
     modalWindowStart.classList.add('hidden');
@@ -310,11 +305,9 @@ const closeModalStart = () => {
         timeCounter = timeCounter <= 0 ? 0 : timeCounter - 1;
     }, 1000);
 
-    // fonction to start a stopwatch (timerProgress)
-    
+    // function to start a stopwatch (timerProgress) : the data to be sent in DB, hidden from user -> countDown()
     let secondLeft = 0;
     let minuteLeft = 0; 
-    
     
     function countDown() {
         let minu;
@@ -324,23 +317,22 @@ const closeModalStart = () => {
             if (secondLeft === 59) {
                 minuteLeft++;
                 secondLeft = 0;
-            }
+            };
             secondLeft < 10 ? (seco = `0${secondLeft}`) : (seco = `${secondLeft}`);
             minuteLeft < 10 ? (minu = `0${minuteLeft}`) : (minu = `${minuteLeft}`);
             timerProgress.innerHTML = `00:${minu}:${seco}`;
-            y = '00:' + minu + ':' + seco;
+            timerToDb = '00:' + minu + ':' + seco;
         }, 1000);
-    }
+    };
 
     countDown();
 
-    
     // setting a timeout to call for the modal window with "Time is up"
     setTimeout(function() {
         if(modalWindow.classList.contains('hidden')) {
             modalApparition();
             newScore.innerHTML = "Sorry, the time is up! Try again";
-        }
+        };
     }, 242000);
 };   
 
@@ -354,7 +346,7 @@ startGameBtn.addEventListener('click', closeModalStart);
 
 
 
-// __________function that checks if the number key from the imgList[] array has been taken (to avoid repetition)
+// __________function that checks if the number key from the imgList[] array has been taken (to avoid repetition of the keys of images) -> randomNumberFromArray(imgList)
 
 let imgTaken = [];
 
@@ -380,7 +372,7 @@ const randomNumberFromArray = (imgList) => {
 
 
 
-// __________function to flip the card -> flipCard(c);
+// __________function to flip the card -> flipCard(c, img)
 
 const flipCard = (c, img) => {
     c.classList.toggle('active-card');
@@ -396,7 +388,7 @@ const flipCard = (c, img) => {
 
 
 
-// __________flip a card on a click
+// __________flip a card on a click : all the actions to perform during the game itself
 
 let flippedCards = [];
 let selectedImgNumbers = [];
@@ -421,7 +413,7 @@ cardArray.forEach( (card) => {
         // pushing a clicked card to a temporary array
         flippedCards.push(card);
 
-        // verification if images are the same
+        // verification if the images in a pair are the same (by pushing the "names" of both) + clearing the array containing them afterwards to stock and compare the next pair of cards
         if(selectedImgNumbers.length !== 2) {
             selectedImgNumbers.push(randomImg.name);
             
@@ -462,13 +454,9 @@ cardArray.forEach( (card) => {
                     // stop interval once the game is over
                     clearInterval(timerFunction);
                     clearInterval(stopI);
-                    newScoreTime.innerHTML = y;
+                    newScoreTime.innerHTML = timerToDb;
                 };
             };
         };
     });
 });
-
-
-
-

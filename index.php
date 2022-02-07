@@ -65,7 +65,6 @@ $score = $scoreQuery->fetchAll(PDO::FETCH_ASSOC);
             <div id="overlay" class="hidden"></div>
             <div id="modal" class="hidden">
                 <div class="modal__text-wrapper dflex">
-                    <!-- <h3 id="start-game">Start a new game</h3> -->
                     <h3 id="new-score">Your new time is: <span id="new-score-time"></span> <span id="new-score-span"></span></h3>
                     <h3>Your best time so far:</h3>
                     <ol>
@@ -81,7 +80,7 @@ foreach($score as $s) {
                 </div>
             </div>
 
-<!-- starting overlay+modal containing a start game button -->
+<!-- starting overlay+modal containing a start game button : first thing to see once the document is loaded -->
 
             <div id="overlay-start"></div>
             <div id="modal-start">
