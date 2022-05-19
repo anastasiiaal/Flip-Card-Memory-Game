@@ -84,7 +84,13 @@ button:hover {
 }
 
 #restart-btn > img {
-    margin-left: 15px;
+    margin-left: 10px;
+    transition: all .8s ease-in-out;
+}
+
+#restart-btn:hover > img {
+    /* transform: scale(1.1); */
+    transform: rotate(-300deg);
 }
 
 #click-counter {
@@ -210,9 +216,13 @@ p.number {
     font-size: 0.9rem;
     background: linear-gradient(90deg, rgba(246,105,87,1) 0%, rgba(238,73,77,1) 100%);
     border: none;
-    padding: 17px 33px;
+    padding: 17px 33px 14px;
     border-radius: 3px;
     margin-top: 35px;
+}
+
+#new-btn:hover, #start-btn:hover {
+    box-shadow: 2px 4px 12px -2px rgba(28, 12, 2, 0.2);
 }
 
 #new-score-time {

@@ -263,8 +263,6 @@ const modalApparition = () => {
 
 const closeModal = () => {
     window.location.reload();
-    modalWindow.classList.add('hidden');
-    overlay.classList.add('hidden');
 };
 
 
