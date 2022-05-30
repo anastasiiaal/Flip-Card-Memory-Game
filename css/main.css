@@ -169,6 +169,24 @@ p.number {
     pointer-events: none;
 }
 
+/* div.card.active-card {
+    animation: pulse .8s infinite;
+}
+
+@keyframes pulse {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    50% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+} */
 
 
 
@@ -309,5 +327,10 @@ p.number {
 
     li {
         font-size: 1rem;
+    }
+
+    .card {
+        height: 70px;
+        margin: 5px 0;
     }
 }
